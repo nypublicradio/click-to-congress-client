@@ -2,6 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
+    API: 'http://localhost:4000',
     modulePrefix: 'clicktocongress-ember',
     environment: environment,
     rootURL: '/',
@@ -43,7 +44,7 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-
+    ENV.API = 'https://clicktocongress.herokuapp.com';
   }
 
   return ENV;
