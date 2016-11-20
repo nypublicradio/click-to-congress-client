@@ -1,7 +1,0 @@
-.legislator {
-  border: 1px solid gray;
-}
-
-.legislator.is-selected {
-  background-color: rgba(140, 200, 140, 0.3);
-}
