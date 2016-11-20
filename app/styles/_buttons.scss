@@ -1,0 +1,14 @@
+@mixin button {
+  @include appearance(none);
+  font-size: $base-font-size;
+  border: 0;
+  background: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+@mixin blue-button {
+  @include button;
+  background-color: $blue;
+  color: white;
+}

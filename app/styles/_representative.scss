@@ -1,0 +1,24 @@
+.representative {
+  @include flexbox((
+    display: flex,
+    align-items: center,
+    justify-content: space-between
+  ));
+  line-height: 14px;
+  
+  border-top: 1px rgba(150, 150, 150, 0.15) solid;
+  &:last-child {
+    border-bottom: 1px rgba(150, 150, 150, 0.15) solid;
+  }
+  
+  p {
+    font-size: 15px;
+  }
+}
+
+.representative-callbutton {
+  @include blue-button;
+  @include border-radius(50px);
+  font-weight: 700;
+  padding: 10px 18px;
+}
