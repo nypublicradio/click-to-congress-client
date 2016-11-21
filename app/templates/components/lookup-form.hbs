@@ -10,13 +10,14 @@
   <p class="error">{{changeset.error.zipCode.validation}}</p>
 {{/if}}
 
-{{input
-  classNames='input-phonenumber'
-  classNameBindings='changeset.error.phoneNumber:is-errored'
-  value=changeset.phoneNumber
-  placeholder='Type your phone number (optional)'}}
-{{#if changeset.error.phoneNumber}}
-  <p class="error">{{changeset.error.phoneNumber.validation}}</p>
-{{/if}}
+    {{input
+      classNames='input-phonenumber'
+      classNameBindings='phoneChangeset.error.phoneNumber:is-errored'
+      value=phoneChangeset.phoneNumber
+      placeholder='Type your phone number (optional)'}}
+      
+    {{#if phoneChangeset.error.phoneNumber}}
+      <p class="error">{{phoneChangeset.error.phoneNumber.validation}}</p>
+    {{/if}}
 
 <button class="lookup-submit" {{action 'getReps'}} disabled={{changeset.isInvalid}}>Go</button>

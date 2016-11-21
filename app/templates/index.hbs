@@ -1,31 +1,14 @@
 <h1>Click To Congress</h1>
 
-<p>Calling your legislator is the most effective way to make change happen.</p>
+  {{lookup-form
+    lookup=(action 'lookup')
+    phoneChangeset=changeset}}
 
-<p>Enter your zip code to see your members of congress.</p>
-
-<p>Then enter your phone number to make the call.</p>
-
-<p>
-  <label>Zip Code
-    {{input value=zip enter='lookup'}}
-  </label>
-</p>
-
-{{#if legislators}}
-  <p>
-    <label>
-      <strong>Enter your phone number</strong>
-      {{input value=phone}}
-    </label>
-  </p>
-
-  {{#if (and phone selectedLegislator)}}
-  <p>
-    <button {{action 'call' selectedLegislator.phone}}>
-      Call {{selectedLegislator.first_name}} {{selectedLegislator.last_name}}
-    </button>
-  </p>
+<div class="l-wide">
+  {{#if model}}
+    <div class="l-sidepad">
+      <p class="aligncenter smaller">You live in zip code {{zip}}. This is called the {{district}} Congressional District. Here's who represents you:</p>
+    </div>
   {{/if}}
   {{#each legislators as |l|}}
   <div class="legislator{{if l.selected ' is-selected'}}" {{action 'select' l}}>

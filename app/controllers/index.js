@@ -2,32 +2,40 @@ import Ember from 'ember';
 import fetch from 'fetch';
 import config from '../config/environment';
 import set from 'ember-metal/set';
+import computed from 'ember-computed';
+import Changeset from 'ember-changeset';
+import {
+  validateFormat
+} from 'ember-changeset-validations/validators';
+import lookupValidator from 'ember-changeset-validations';
 
-function formatPhoneNumber(number) {
-  let formatted = number.replace(/-/g, '');
-  if (!formatted.startsWith('1')) {
-    return '1' + formatted;
-  } else {
-    return formatted;
-  }
-  
-}
+const PhoneValidation = {
+  phoneNumber: validateFormat({
+    type: 'phone',
+    message: (key, type, value) => `${value} is not a valid phone number`
+  })
+};
 
 export default Ember.Controller.extend({
-  selectedLegislator: Ember.computed('legislators.@each.selected', function() {
-    let legislators = this.get('legislators');
-    return legislators.findBy('selected');
-  }),
-  myFormattedNumber: Ember.computed('phone', function() {
-    return formatPhoneNumber(this.get('phone'));
+  init() {
+    this._super(...arguments);
+    this.changeset = new Changeset(this, lookupValidator(PhoneValidation), PhoneValidation);
+  },
+  
+  formattedPhoneNumber: computed('phoneNumber', function() {
+    let number = this.get('phoneNumber');
+    if (!number) {
+      return false;
+    }
+    let formatted = number.replace(/[-\(\(\W\.]/g, '');
+    if (formatted.slice(0, 1) !== '1') {
+      return '1' + formatted;
+    } else {
+      return formatted;
+    }
   }),
   
   actions: {
-    select(legislator) {
-      this.get('legislators')
-        .forEach(l => set(l, 'selected', false));
-      set(legislator, 'selected', true);
-    },
     lookup(zip) {
       fetch(`${config.API}/api/lookup?zip=${zip}`)
         .then(r => r.json())

@@ -1,5 +1,10 @@
 import { moduleForComponent, test } from 'ember-qunit';
 import hbs from 'htmlbars-inline-precompile';
+import Changeset from 'ember-changeset';
+import {
+  validateFormat
+} from 'ember-changeset-validations/validators';
+import lookupValidator from 'ember-changeset-validations';
 
 moduleForComponent('lookup-form', 'Integration | Component | lookup form', {
   integration: true
@@ -25,8 +30,15 @@ test('it renders zip code validations', function(assert) {
 
 test('it renders phone number validations', function(assert) {
   const BAD_NUMBER = 'abcde';
+  const PhoneValidation = {
+    phoneNumber: validateFormat({
+      type: 'phone',
+      message: (key, type, value) => `${value} is not a valid phone number`
+    })
+  };
   
-  this.render(hbs`{{lookup-form}}`);
+  this.set('changeset', new Changeset({}, lookupValidator(PhoneValidation), PhoneValidation));
+  this.render(hbs`{{lookup-form phoneChangeset=changeset}}`);
   this.$('.input-phonenumber').val(BAD_NUMBER);
   this.$('.input-phonenumber').trigger('change');
   
@@ -36,17 +48,25 @@ test('it renders phone number validations', function(assert) {
 
 test('it calls the passed in lookup action when clicked', function(assert) {
   const ZIP = '123456';
-  const PHONE = '5555555555';
-  this.set('lookup', function(zip, phone) {
+  this.set('lookup', function(zip) {
     assert.equal(zip, ZIP, 'passes zip');
-    assert.equal(phone, PHONE, 'passes phone if present');
   });
   this.render(hbs`{{lookup-form lookup=(action lookup)}}`);
   this.$('.input-zipcode').val(ZIP);
   this.$('.input-zipcode').trigger('change');
   
-  this.$('.input-phonenumber').val(PHONE);
-  this.$('.input-phonenumber').trigger('change');
+  this.$('.lookup-submit').click();
+});
+
+test('it calls lookup without a phone number', function(assert) {
+  const ZIP = '123456';
+  this.set('lookup', function(zip) {
+    assert.ok('called lookup');
+    assert.equal(zip, ZIP, 'passes zip');
+  });
+  this.render(hbs`{{lookup-form lookup=(action lookup)}}`);
+  this.$('.input-zipcode').val(ZIP);
+  this.$('.input-zipcode').trigger('change');
   
   this.$('.lookup-submit').click();
 });
