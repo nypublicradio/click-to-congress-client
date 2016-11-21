@@ -37,14 +37,15 @@ export default Ember.Controller.extend({
   
   actions: {
     lookup(zip) {
-      fetch(`${config.API}/api/lookup?zip=${zip}`)
-        .then(r => r.json())
-        .then(j => this.set('legislators', j));
+      this.store.query('representative', {zip})
+        .then(r => this.set('model', r))
+        .then(() => this.set('zip', zip));
     },
     call(phone) {
-      let my_number = this.get('myFormattedNumber');
-      let dial_out = formatPhoneNumber(phone);
-      fetch(`${config.API}/api/call?my_number=${my_number}&dial_out=${dial_out}`);
+      if (this.changeset.get('isValid')) {
+        this.changeset.save();
+      }
+      fetch(`${config.API}/api/call?my_number=${this.get('formattedPhoneNumber')}&dial_out=${phone}`);
     }
   }
 });

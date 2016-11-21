@@ -1,8 +1,11 @@
-<h1>Click To Congress</h1>
+<div class="l-medium">
+  
+  <h1 class="aligncenter">Click To Congress</h1>
 
   {{lookup-form
     lookup=(action 'lookup')
     phoneChangeset=changeset}}
+</div>
 
 <div class="l-wide">
   {{#if model}}
@@ -10,13 +13,7 @@
       <p class="aligncenter smaller">You live in zip code {{zip}}. This is called the {{district}} Congressional District. Here's who represents you:</p>
     </div>
   {{/if}}
-  {{#each legislators as |l|}}
-  <div class="legislator{{if l.selected ' is-selected'}}" {{action 'select' l}}>
-    <h2>
-      {{if (eq l.chamber "senate") 'Senator' 'Representative'}}
-      {{l.first_name}} {{l.last_name}}
-    </h2>
-    <address><a href={{l.phone}}>{{l.phone}}</a></address>
-  </div>
+  {{#each model as |rep|}}
+    {{rep-item rep=rep call=(action 'call')}}
   {{/each}}
-{{/if}}
+</div>
