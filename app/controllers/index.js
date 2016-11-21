@@ -8,6 +8,7 @@ import {
   validateFormat
 } from 'ember-changeset-validations/validators';
 import lookupValidator from 'ember-changeset-validations';
+import ordinalize from '../utils/ordinalize';
 
 const PhoneValidation = {
   phoneNumber: validateFormat({
@@ -33,6 +34,10 @@ export default Ember.Controller.extend({
     } else {
       return formatted;
     }
+  }),
+  district: computed('model', function() {
+    let district = this.get('model').findBy('district').get('district');
+    return ordinalize(district);
   }),
   
   actions: {
