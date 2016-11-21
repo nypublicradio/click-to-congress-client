@@ -1,4 +1,6 @@
 .lookup-form {
+  margin-bottom: 35px;
+  
   h2 {
     font-size: 18px;
   }
@@ -7,11 +9,13 @@
 .input-phonenumber {
   @include input;
   @include errors;
+  margin-bottom: 15px;
 }
 
 .input-zipcode {
   @include input;
   @include errors;
+  margin-bottom: 15px;
 }
 
 .lookup-submit {

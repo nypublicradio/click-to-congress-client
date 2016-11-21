@@ -1,14 +1,18 @@
-<h2>Connecting you to the people in goverment who represent you, so you can tell them what you want.</h2>
+<div class="l-sidepad">
+  <h2 class="aligncenter">Connecting you to the people in goverment who represent you, so you can tell them what you want.</h2>
+</div>
 
-{{input
-  classNames='input-zipcode'
-  classNameBindings='changeset.error.zipCode:is-errored'
-  value=changeset.zipCode
-  placeholder='Type your zipcode'}}
-  
-{{#if changeset.error.zipCode}}
-  <p class="error">{{changeset.error.zipCode.validation}}</p>
-{{/if}}
+<div class="l-narrow">
+  <div class="l-sidepad">
+    {{input
+      classNames='input-zipcode'
+      classNameBindings='changeset.error.zipCode:is-errored'
+      value=changeset.zipCode
+      placeholder='Type your zipcode'}}
+      
+    {{#if changeset.error.zipCode}}
+      <p class="error">{{changeset.error.zipCode.validation}}</p>
+    {{/if}}
 
     {{input
       classNames='input-phonenumber'
@@ -20,4 +24,6 @@
       <p class="error">{{phoneChangeset.error.phoneNumber.validation}}</p>
     {{/if}}
 
-<button class="lookup-submit" {{action 'getReps'}} disabled={{changeset.isInvalid}}>Go</button>
+    <button class="lookup-submit" {{action 'getReps'}} disabled={{changeset.isInvalid}}>Go</button>
+  </div>
+</div>

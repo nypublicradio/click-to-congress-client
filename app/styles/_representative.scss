@@ -16,6 +16,20 @@
   }
 }
 
+.representative-leftside {
+  padding-left: 15px;
+}
+
+.representative-rightside {
+  padding-right: 15px;
+}
+
+@media only screen and (max-width: 480px) {
+  .touchevents .representative-rightside {
+    display: none;
+  }
+}
+
 .representative-callbutton {
   @include blue-button;
   @include border-radius(50px);

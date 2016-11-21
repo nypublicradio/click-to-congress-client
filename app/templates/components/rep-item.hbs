@@ -1,7 +1,11 @@
 <div class="representative-leftside">
   <h3>{{rep.fullTitle}} {{rep.firstName}} {{rep.lastName}}</h3>
-  <p>{{rep.party}}</p>
+  <p>{{rep.fullParty}}</p>
+  {{#if isTouch}}
+  <p>Phone: <a href={{rep.phone}}>{{rep.phone}}</a></p>
+  {{else}}
   <p>Phone: {{rep.phone}}</p>
+  {{/if}}
 </div>
 
 <div class="representative-rightside">

@@ -1,6 +1,7 @@
 /*jshint node:true*/
 /* global require, module */
 var EmberApp = require('ember-cli/lib/broccoli/ember-app');
+var fs = require('fs');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
@@ -21,5 +22,12 @@ module.exports = function(defaults) {
   // modules that you would like to import into your application
   // please specify an object with the list of modules as keys
   // along with the exports of each module as its value.
+  try {
+    fs.accessSync('vendor/modernizr/modernizr-build.js');
+    app.import('vendor/modernizr/modernizr-build.js');
+    app.import('vendor/shims/modernizr.js');
+  } catch(e) {
+    console.log('there was a problem importing the modernizr build. please run grunt modernizr:dist first.');
+  }
   return app.toTree();
 };
