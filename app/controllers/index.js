@@ -1,7 +1,6 @@
-import Ember from 'ember';
+import Controller from 'ember-controller';
 import fetch from 'fetch';
 import config from '../config/environment';
-import set from 'ember-metal/set';
 import computed from 'ember-computed';
 import Changeset from 'ember-changeset';
 import {
@@ -17,7 +16,7 @@ const PhoneValidation = {
   })
 };
 
-export default Ember.Controller.extend({
+export default Controller.extend({
   init() {
     this._super(...arguments);
     this.changeset = new Changeset(this, lookupValidator(PhoneValidation), PhoneValidation);
