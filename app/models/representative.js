@@ -16,7 +16,7 @@ export default DS.Model.extend({
       case 'Sen':
         return 'Senator';
       case 'Rep':
-        return 'Republican';
+        return 'Representative';
       case 'Del':
         return 'Delegate';
       case 'Com':
