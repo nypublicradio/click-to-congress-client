@@ -2,7 +2,7 @@
 
 module.exports = function(environment) {
   var ENV = {
-    API: 'http://localhost:4000',
+    API: 'http://localhost:3000',
     modulePrefix: 'clicktocongress-ember',
     environment: environment,
     rootURL: '/',
