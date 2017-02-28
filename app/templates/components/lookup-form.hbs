@@ -1,5 +1,5 @@
 <div class="l-sidepad">
-  <h2 class="aligncenter">Connecting you to the people in goverment who represent you, so you can tell them what you want.</h2>
+  <h2 class="aligncenter">{{t "blurb"}}</h2>
 </div>
 
 <div class="l-narrow">
@@ -8,7 +8,7 @@
       classNames='input-zipcode'
       classNameBindings='changeset.error.zipCode:is-errored'
       value=changeset.zipCode
-      placeholder='Type your zipcode'}}
+      placeholder=(t 'zipcode.placeholder')}}
       
     {{#if changeset.error.zipCode}}
       <p class="error">{{changeset.error.zipCode.validation}}</p>
@@ -18,12 +18,12 @@
       classNames='input-phonenumber'
       classNameBindings='phoneChangeset.error.phoneNumber:is-errored'
       value=phoneChangeset.phoneNumber
-      placeholder='Type your phone number (optional)'}}
+      placeholder=(t 'phone-number.placeholder')}}
       
     {{#if phoneChangeset.error.phoneNumber}}
-      <p class="error">{{phoneChangeset.error.phoneNumber.validation}}</p>
+      <p class="error">{{t 'validations.phone' value=phoneChangeset.phoneNumber}}</p>
     {{/if}}
 
-    <button class="lookup-submit" {{action 'getReps'}} disabled={{changeset.isInvalid}}>Go</button>
+    <button class="lookup-submit" {{action 'getReps'}} disabled={{changeset.isInvalid}}>{{t 'labels.submit'}}</button>
   </div>
 </div>

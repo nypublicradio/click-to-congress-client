@@ -10,7 +10,7 @@
 <div class="l-wide">
   {{#if model}}
     <div class="l-sidepad">
-      <p class="aligncenter smaller">You live in zip code {{zip}}. This is called the {{district}} Congressional District. Here's who represents you:</p>
+      <p class="aligncenter smaller">{{t 'your-reps' zip=zip district=district}}</p>
     </div>
   {{/if}}
   {{#each model as |rep|}}

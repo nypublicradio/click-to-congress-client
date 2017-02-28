@@ -2,14 +2,14 @@
   <h3>{{t (concat 'titles.' rep.title)}} {{rep.firstName}} {{rep.lastName}}</h3>
   <p>{{t (concat 'parties.' rep.party)}}</p>
   {{#if isTouch}}
-  <p>Phone: <a href="tel:{{rep.phone}}">{{rep.phone}}</a></p>
+  <p>{{t 'labels.phone'}}: <a href="tel:{{rep.phone}}">{{rep.phone}}</a></p>
   {{else}}
-  <p>Phone: {{rep.phone}}</p>
+  <p>{{t 'labels.phone'}}: {{rep.phone}}</p>
   {{/if}}
 </div>
 
 <div class="representative-rightside">
   <button class="representative-callbutton" {{action 'callRep' rep.phone}}>
-    Call this person
+    {{t 'labels.call'}}
   </button>
 </div>
