@@ -10,11 +10,3 @@ test('it exists', function(assert) {
   // let store = this.store();
   assert.ok(!!model);
 });
-
-test('computes fullTitle', function(assert) {
-  let model = this.subject({
-    title: 'Sen'
-  });
-  
-  assert.equal(model.get('fullTitle'), 'Senator', 'should be a senator');
-});

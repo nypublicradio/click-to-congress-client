@@ -1,6 +1,6 @@
 <div class="representative-leftside">
-  <h3>{{t (concat 'titles.' rep.title)}} {{rep.firstName}} {{rep.lastName}}</h3>
-  <p>{{t (concat 'parties.' rep.party)}}</p>
+  <h3>{{t (concat 'titles.' rep.title) default='titles.none'}} {{rep.firstName}} {{rep.lastName}}</h3>
+  <p>{{t (concat 'parties.' rep.party) default='parties.none'}}</p>
   {{#if isTouch}}
   <p>{{t 'labels.phone'}}: <a href="tel:{{rep.phone}}">{{rep.phone}}</a></p>
   {{else}}

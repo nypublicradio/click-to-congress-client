@@ -10,7 +10,7 @@ test('it renders', function(assert) {
     firstName: 'foo',
     lastName: 'bar',
     party: 'baz',
-    fullTitle: 'Senator',
+    title: 'Sen',
     phone: '555-555-5555'
   });
   this.render(hbs`{{rep-item rep=rep}}`);

@@ -26,13 +26,15 @@ export default {
     "Sen": "Senator",
     "Rep": "Representative",
     "Del": "Delegate",
-    "Com": "Com"
+    "Com": "Com",
+    "none": ""
   },
   
   "parties": {
     "D": "Democract",
     "R": "Republican",
-    "I": "Independent"
+    "I": "Independent",
+    "none": "No Party"
   },
   
   'labels': {
