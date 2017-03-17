@@ -1,8 +1,9 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
+  var deployTarget = process.env.DEPLOY_TARGET;
   var ENV = {
-    API: 'http://localhost:3000',
+    API: process.env.API || 'http://localhost:3000',
     modulePrefix: 'clicktocongress-ember',
     environment: environment,
     rootURL: '/',
@@ -52,6 +53,10 @@ module.exports = function(environment) {
 
   if (environment === 'production') {
     ENV.API = 'https://clicktocongress.herokuapp.com';
+  }
+  
+  if (deployTarget === 'demo') {
+    ENV.API = 'http://api.demo.nypr.digital';
   }
 
   return ENV;

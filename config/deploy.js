@@ -24,7 +24,7 @@ module.exports = function(deployTarget) {
     // configure other plugins for development deploy target here
   }
 
-  if (deployTarget === 'staging') {
+  if (deployTarget === 'demo') {
     ENV.build.environment = 'production';
     // configure other plugins for staging deploy target here
   }
