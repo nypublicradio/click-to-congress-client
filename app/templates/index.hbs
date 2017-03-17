@@ -12,7 +12,12 @@
 <div class="l-wide">
   {{#if model}}
     <div class="l-sidepad">
-      <p class="aligncenter smaller">{{t 'your-reps' zip=zip district=district}}</p>
+      <p class="aligncenter smaller">
+        {{t 'location.address' address=address}}.<br>
+        {{t 'location.congress' congress=congress}}.<br />
+        {{t 'location.stateSenate' stateSenate=stateSenate}}.<br />
+        {{t 'location.stateAssembly' stateAssembly=stateAssembly}}<br />
+        {{t 'location.reps'}}</p>
     </div>
   {{/if}}
   {{#each model as |rep|}}
