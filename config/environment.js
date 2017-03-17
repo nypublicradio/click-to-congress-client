@@ -3,7 +3,8 @@
 module.exports = function(environment) {
   var deployTarget = process.env.DEPLOY_TARGET;
   var ENV = {
-    API: process.env.API || 'http://localhost:3000',
+    API: process.env.API || '/api',
+    API_PREFIX: process.env.API_PREFIX || '',
     modulePrefix: 'clicktocongress-ember',
     environment: environment,
     rootURL: '/',

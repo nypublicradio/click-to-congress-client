@@ -11,6 +11,6 @@ module.exports = function(app) {
   });
 
   app.use(proxyPath, function(req, res, next){
-    proxy.web(req, res, { target: 'http://api.demo.nypr.digital' });
+    proxy.web(req, res, { target: 'http://api.demo.nypr.digital/click-to-congress' });
   });
 };
