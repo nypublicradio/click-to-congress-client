@@ -18,14 +18,14 @@ export default Ember.Component.extend({
 
   init() {
     this._super(...arguments);
-    this.changeset = new Changeset(this, lookupValidator(ZipValidation), ZipValidation);
+    // this.changeset = new Changeset(this, lookupValidator(ZipValidation), ZipValidation);
   },
   
   actions: {
     getReps() {
-      if (this.changeset.get('isValid')) {
-        this.changeset.save();
-      }
+      // if (this.changeset.get('isValid')) {
+      //   this.changeset.save();
+      // }
       this.get('lookup')(this.get('zipCode'));
     },
   }
