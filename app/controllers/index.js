@@ -15,14 +15,7 @@ const PhoneValidation = {
   })
 };
 
-export default Controller.extend({
-  init() {
-    this._super(...arguments);
-    this.changeset = new Changeset(this, lookupValidator(PhoneValidation), PhoneValidation);
-  },
-  
-  formattedPhoneNumber: computed('phoneNumber', function() {
-    let number = this.get('phoneNumber');
+function formatPhoneNumber(number) {
     if (!number) {
       return false;
     }
@@ -32,6 +25,17 @@ export default Controller.extend({
     } else {
       return formatted;
     }
+}
+
+export default Controller.extend({
+  init() {
+    this._super(...arguments);
+    this.changeset = new Changeset(this, lookupValidator(PhoneValidation), PhoneValidation);
+  },
+  
+  formattedPhoneNumber: computed('phoneNumber', function() {
+    let number = this.get('phoneNumber');
+    return formatPhoneNumber(number);
   }),
   
   congress: computed('model', function() {
@@ -65,7 +69,8 @@ export default Controller.extend({
       if (this.changeset.get('isValid')) {
         this.changeset.save();
       }
-      fetch(`${config.API}/api/call?my_number=${this.get('formattedPhoneNumber')}&dial_out=${phone}`);
+      let number = formatPhoneNumber(phone);
+      fetch(`${config.API}${config.API_PREFIX}/v1/call?my_number=${this.get('formattedPhoneNumber')}&dial_out=${number}`);
     }
   }
 });
