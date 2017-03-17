@@ -70,7 +70,7 @@ export default Controller.extend({
         this.changeset.save();
       }
       let number = formatPhoneNumber(phone);
-      fetch(`${config.API}${config.API_PREFIX}/v1/call?my_number=${this.get('formattedPhoneNumber')}&dial_out=${number}`);
+      fetch(`${config.API}/${config.API_NAMESPACE}/v1/call?my_number=${this.get('formattedPhoneNumber')}&dial_out=${number}`);
     }
   }
 });

@@ -4,7 +4,7 @@ module.exports = function(environment) {
   var deployTarget = process.env.DEPLOY_TARGET;
   var ENV = {
     API: process.env.API || '/api',
-    API_PREFIX: process.env.API_PREFIX || '',
+    API_NAMESPACE: process.env.API_NAMESPACE || '',
     modulePrefix: 'clicktocongress-ember',
     environment: environment,
     rootURL: '/',
@@ -58,7 +58,7 @@ module.exports = function(environment) {
   
   if (deployTarget === 'demo') {
     ENV.API = 'http://api.demo.nypr.digital';
-    ENV.API_PREFIX = '/click-to-congress'
+    ENV.API_NAMESPACE = 'click-to-congress'
   }
 
   return ENV;
