@@ -7,7 +7,6 @@ import {
   validateFormat
 } from 'ember-changeset-validations/validators';
 import lookupValidator from 'ember-changeset-validations';
-import ordinalize from '../utils/ordinalize';
 
 const PhoneValidation = {
   phoneNumber: validateFormat({
@@ -34,9 +33,26 @@ export default Controller.extend({
       return formatted;
     }
   }),
-  district: computed('model', function() {
-    let district = this.get('model').findBy('district').get('district');
-    return ordinalize(district);
+  
+  congress: computed('model', function() {
+    let congressPerson = this.get('model').findBy('title', 'Representative');
+    if (congressPerson) {
+      return congressPerson.get('district');
+    }
+  }),
+  
+  stateSenate: computed('model', function() {
+    let stateSenator = this.get('model').findBy('title', 'State Senator');
+    if (stateSenator) {
+      return stateSenator.get('district');
+    }
+  }),
+  
+  stateAssembly: computed('model', function() {
+    let stateAssemblor = this.get('model').findBy('title', 'Assembly Member');
+    if (stateAssemblor) {
+      return stateAssemblor.get('district');
+    }
   }),
   
   actions: {
