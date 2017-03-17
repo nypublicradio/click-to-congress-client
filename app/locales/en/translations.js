@@ -6,7 +6,14 @@ export default {
   "phone-number": {
     "placeholder": "Type your phone number (optional)"
   },
-  "your-reps": "You live in zip code {{zip}}. This is called the {{district}} Congressional District. Here's who represents you:",
+  
+  "location": {
+    "address": "Your address is {{address}}",
+    "congress": "This is called the {{congress}} Congressional District",
+    "stateSenate": "This is called the {{stateSenate}} State Senate District",
+    "stateAssembly": "This is called the {{stateAssembly}} State Assembly District",
+    "reps": "Here's who represents you:"
+  },
   
   "language-select.language": {
     "en": "english",
@@ -23,17 +30,26 @@ export default {
   },
   
   "titles": {
-    "Sen": "Senator",
-    "Rep": "Representative",
-    "Del": "Delegate",
-    "Com": "Com",
+    "Senator": "Senator",
+    "Representative": "Representative",
+    "State Senator": "State Senator",
+    "Assembly Member": "Assembly Member",
+    "Governor": "Governor",
+    "Lieutenant Governror": "Lieutenant Governor",
+    "Mayor": "Mayor",
+    "Comptroller": "Comptroller",
+    "Public Advocate": "Public Advocate",
+    "Attorney General": "Attorney General",
+    "State Comptroller": "State Comptroller",
+    "County District Attorney": "County District Attorney",
+    "Borough President": "Borough President",
     "none": ""
   },
   
   "parties": {
-    "D": "Democract",
-    "R": "Republican",
-    "I": "Independent",
+    "Democratic": "Democrat",
+    "Republican": "Republican",
+    "Independent": "Independent",
     "none": "No Party"
   },
   
