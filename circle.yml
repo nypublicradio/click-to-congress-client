@@ -1,3 +1,7 @@
+test:
+  override:
+    - "true"
+
 deployment:
   prod:
     branch: master
