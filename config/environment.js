@@ -58,6 +58,7 @@ module.exports = function(environment) {
   
   if (deployTarget === 'demo') {
     ENV.API = 'http://api.demo.nypr.digital';
+    ENV.API_PREFIX = '/click-to-congress'
   }
 
   return ENV;
