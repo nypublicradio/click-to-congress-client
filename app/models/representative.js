@@ -10,6 +10,7 @@ export default DS.Model.extend({
   phone: DS.attr('string'),
   party: DS.attr('string'),
   office: DS.attr('string'),
+  divisionId: DS.attr('string'),
   title: computed('office', function() {
     let office = this.get('office');
     if (office === 'United States Senate') {
