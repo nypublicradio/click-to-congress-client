@@ -56,10 +56,10 @@ export default Controller.extend({
   }),
   
   actions: {
-    lookup(zip) {
-      this.store.query('representative', {zip})
+    lookup(address) {
+      this.store.query('representative', {address})
         .then(r => this.set('model', r))
-        .then(() => this.set('zip', zip));
+        .then(() => this.set('address', address));
     },
     call(phone) {
       if (this.changeset.get('isValid')) {
