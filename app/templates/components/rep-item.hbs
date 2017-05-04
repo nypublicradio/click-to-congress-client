@@ -1,5 +1,5 @@
 <div class="representative-leftside">
-  <h3>{{t (concat 'titles.' rep.title) default='titles.none'}} {{rep.name}}</h3>
+  <h3>{{rep.title}} {{rep.name}}</h3>
   <p>{{t (concat 'parties.' rep.party) default='parties.none'}}</p>
   {{#if isTouch}}
   <p>{{t 'labels.phone'}}: <a href="tel:{{rep.phone}}">{{rep.phone}}</a></p>
@@ -9,7 +9,9 @@
 </div>
 
 <div class="representative-rightside">
+  {{#if myPhone}}
   <button class="representative-callbutton" {{action 'callRep' rep.phone}}>
     {{t 'labels.call'}}
   </button>
+  {{/if}}
 </div>

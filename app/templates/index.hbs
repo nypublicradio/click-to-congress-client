@@ -13,15 +13,12 @@
   {{#if model}}
     <div class="l-sidepad">
       <p class="aligncenter smaller">
-        {{t 'location.address' address=address}}.<br>
-        {{t 'location.congress' congress=congress}}.<br />
-        {{t 'location.stateSenate' stateSenate=stateSenate}}.<br />
-        {{t 'location.stateAssembly' stateAssembly=stateAssembly}}<br />
-        {{t 'location.reps'}}</p>
+        {{t 'location.blurb' address=address congress=congress stateSenate=stateSenate stateAssembly=stateAssembly}}
+      </p>
     </div>
   {{/if}}
   {{#each model as |rep|}}
-    {{rep-item rep=rep call=(action 'call')}}
+    {{rep-item myPhone=changeset.phoneNumber rep=rep call=(action 'call')}}
   {{/each}}
 </div>
 

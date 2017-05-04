@@ -1,5 +1,5 @@
 export default {
-  "blurb": "Connecting you to the people in goverment who represent you, so you can tell them what you want.",
+  "blurb": "Connecting you to the people in government who represent you, so you can tell them what you want.",
   "address": {
     "placeholder": "Type your address"
   },
@@ -8,11 +8,7 @@ export default {
   },
   
   "location": {
-    "address": "Your address is {{address}}",
-    "congress": "This is called the {{congress}} Congressional District",
-    "stateSenate": "This is called the {{stateSenate}} State Senate District",
-    "stateAssembly": "This is called the {{stateAssembly}} State Assembly District",
-    "reps": "Here's who represents you:"
+    "blurb": "Your address was recognized as {{address}}. If that doesn't seem right, try again with more details. <br>This is in a few different districts: the {{congress}} Congressional District, the {{stateSenate}} State Senate District, and the {{stateAssembly}} State Assembly District. <br>Here's who represents you:"
   },
   
   "language-select.language": {
@@ -23,7 +19,7 @@ export default {
   },
   
   "validations": {
-    "phone": "{{value}} is not a valid phone number",
+    "phone": "It looks like you didn’t enter your phone number correctly. It should be 9 numbers with no extra characters.",
     "zip": {
       "between": "{{description}} must be between {{min}} and {{max}} characters"
     }
@@ -55,7 +51,7 @@ export default {
   
   'labels': {
     'phone': 'Phone',
-    "submit": "Go",
-    'call': 'Call this person'
+    "submit": "Find my representatives",
+    'call': 'Call this person now'
   }
 };
