@@ -11,7 +11,8 @@ import lookupValidator from 'ember-changeset-validations';
 const PhoneValidation = {
   phoneNumber: validateFormat({
     type: 'phone',
-    message: (key, type, value) => `${value} is not a valid phone number`
+    message: (key, type, value) => `${value} is not a valid phone number`,
+    allowBlank: true
   })
 };
 
@@ -62,8 +63,7 @@ export default Controller.extend({
   actions: {
     lookup(address) {
       this.store.query('representative', {address})
-        .then(r => this.set('model', r))
-        .then(() => this.set('address', address));
+        .then(r => this.set('model', r));
     },
     call(phone) {
       if (this.changeset.get('isValid')) {
