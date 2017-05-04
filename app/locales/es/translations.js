@@ -8,7 +8,7 @@ export default {
     "cn": "中文",
   },
   
-  "zipcode": {
+  "address": {
     "placeholder": "Escriba su código postal"
   },
   "phone-number": {

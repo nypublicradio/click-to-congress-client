@@ -5,13 +5,13 @@
 <div class="l-narrow">
   <div class="l-sidepad">
     {{input
-      classNames='input-zipcode'
-      classNameBindings='changeset.error.zipCode:is-errored'
-      value=zipCode
-      placeholder=(t 'zipcode.placeholder')}}
+      classNames='input-address'
+      classNameBindings='changeset.error.address:is-errored'
+      value=address
+      placeholder=(t 'address.placeholder')}}
       
-    {{#if changeset.error.zipCode}}
-      <p class="error">{{changeset.error.zipCode.validation}}</p>
+    {{#if changeset.error.address}}
+      <p class="error">{{changeset.error.address.validation}}</p>
     {{/if}}
 
     {{input

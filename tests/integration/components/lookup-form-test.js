@@ -13,18 +13,18 @@ moduleForComponent('lookup-form', 'Integration | Component | lookup form', {
 test('it renders', function(assert) {
   this.render(hbs`{{lookup-form}}`);
 
-  assert.equal(this.$('.input-zipcode').length, 1, 'zip code input is rendered');
+  assert.equal(this.$('.input-address').length, 1, 'zip code input is rendered');
   assert.equal(this.$('.input-phonenumber').length, 1, 'phone number input is rendered');
 });
 
 test('it renders zip code validations', function(assert) {
   this.render(hbs`{{lookup-form}}`);
-  this.$('.input-zipcode').val('1121g');
-  this.$('.input-zipcode').trigger('change');
+  this.$('.input-address').val('');
+  this.$('.input-address').trigger('change');
   
   assert.equal(this.$('.error').length, 1, 'should show an error message');
   assert.equal(this.$('.error').text(), 'Zip code must be all numbers');
-  assert.ok(this.$('.input-zipcode').hasClass('is-errored'), 'should have errored class');
+  assert.ok(this.$('.input-address').hasClass('is-errored'), 'should have errored class');
   assert.ok(this.$('.lookup-submit').is(':disabled'), 'submit is disabled if zip code is bad');
 });
 
@@ -52,8 +52,8 @@ test('it calls the passed in lookup action when clicked', function(assert) {
     assert.equal(zip, ZIP, 'passes zip');
   });
   this.render(hbs`{{lookup-form lookup=(action lookup)}}`);
-  this.$('.input-zipcode').val(ZIP);
-  this.$('.input-zipcode').trigger('change');
+  this.$('.input-address').val(ZIP);
+  this.$('.input-address').trigger('change');
   
   this.$('.lookup-submit').click();
 });
@@ -65,8 +65,8 @@ test('it calls lookup without a phone number', function(assert) {
     assert.equal(zip, ZIP, 'passes zip');
   });
   this.render(hbs`{{lookup-form lookup=(action lookup)}}`);
-  this.$('.input-zipcode').val(ZIP);
-  this.$('.input-zipcode').trigger('change');
+  this.$('.input-address').val(ZIP);
+  this.$('.input-address').trigger('change');
   
   this.$('.lookup-submit').click();
 });

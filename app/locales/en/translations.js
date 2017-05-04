@@ -1,7 +1,7 @@
 export default {
   "blurb": "Connecting you to the people in goverment who represent you, so you can tell them what you want.",
-  "zipcode": {
-    "placeholder": "Type your zipcode"
+  "address": {
+    "placeholder": "Type your address"
   },
   "phone-number": {
     "placeholder": "Type your phone number (optional)"

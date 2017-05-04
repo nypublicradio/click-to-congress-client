@@ -12,7 +12,7 @@ test('visiting /', function(assert) {
   
   visit('/');
 
-  fillIn('.input-zipcode', '11581');
+  fillIn('.input-address', '155 Main street');
   click('.lookup-submit');
   
   andThen(function() {

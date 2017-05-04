@@ -1,6 +1,6 @@
 export default {
   "blurb": "把你连接到代表你的政府中的人，所以你可以告诉他们你想要什么。",
-  "zipcode": {
+  "address": {
     "placeholder": '输入您的邮政编码'
   },
   "phone-number": {
