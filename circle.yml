@@ -25,8 +25,8 @@ deployment:
   prod:
     branch: master
     commands:
-      - ./node_modules/ember-cli/bin/ember deploy production --verbose --activate:
+      - ./node_modules/ember-cli/bin/ember deploy demo --verbose --activate:
           environment:
-            AWS_BUCKET: $AWS_BUCKET
-            AWS_REGION: $AWS_REGION
+            AWS_BUCKET: $DEMO_AWS_BUCKET
+            AWS_REGION: $DEMO_AWS_REGION
       
