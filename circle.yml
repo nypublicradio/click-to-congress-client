@@ -9,7 +9,7 @@ dependencies:
     - sudo apt-get update && sudo apt-get install ruby-sass yarn
     - gem update --system
     - gem install compass --no-ri --no-rdoc
-    - yarn global add ember-cli:
+    - yarn global add ember-cli bower:
         environment:
           PATH: "/usr/bin:${PATH}"
     - yarn:
