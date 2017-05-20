@@ -1,6 +1,6 @@
-test:
-  override:
-    - echo skip tests
+machine:
+  node:
+    version: 7.10
 
 dependencies:
   override:
@@ -16,6 +16,10 @@ dependencies:
         environment:
           PATH: "/usr/bin:${PATH}"
     - bower i
+
+test:
+  override:
+    - echo skip tests
 
 deployment:
   prod:
