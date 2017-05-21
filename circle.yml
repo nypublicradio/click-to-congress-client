@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 7.10
+    version: 7.10.0
 
 dependencies:
   override:
@@ -9,7 +9,7 @@ dependencies:
     - sudo apt-get update && sudo apt-get install ruby-sass yarn
     - gem update --system
     - gem install compass --no-ri --no-rdoc
-    - yarn global add ember-cli bower:
+    - yarn global add ember-cli bower grunt-cli:
         environment:
           PATH: "/usr/bin:${PATH}"
     - yarn:
@@ -25,6 +25,7 @@ deployment:
   prod:
     branch: master
     commands:
+      - grunt modernizr:dist
       - ./node_modules/ember-cli/bin/ember deploy demo --verbose --activate:
           environment:
             AWS_BUCKET: $DEMO_AWS_BUCKET
