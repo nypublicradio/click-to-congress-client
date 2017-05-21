@@ -3,11 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   tagName: 'form',
   classNames: ['lookup-form'],
-
-  init() {
-    this._super(...arguments);
-    // this.changeset = new Changeset(this, lookupValidator(ZipValidation), ZipValidation);
-  },
+  error: {},
   
   submit() {
     this.send('getReps');
@@ -15,9 +11,12 @@ export default Ember.Component.extend({
   
   actions: {
     getReps() {
-      // if (this.changeset.get('isValid')) {
-      //   this.changeset.save();
-      // }
+      if (!this.get('address')) {
+        this.set('error.address', 'Address required');
+        return;
+      } else {
+        this.set('error.address', null);
+      }
       this.get('lookup')(this.get('address'));
     },
   }
