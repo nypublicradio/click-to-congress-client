@@ -21,6 +21,11 @@
     font-style: oblique;
     font-size: 14px;
   }
+  
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 @mixin errors {

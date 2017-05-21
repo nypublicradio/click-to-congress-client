@@ -5,6 +5,11 @@
   background: none;
   padding: 0;
   cursor: pointer;
+  
+  &[disabled] {
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 @mixin blue-button {
