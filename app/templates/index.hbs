@@ -5,7 +5,8 @@
   <h1 class="aligncenter">Click To Congress</h1>
 
   {{lookup-form
-    lookup=(action 'lookup')
+    lookup=(perform lookup)
+    isRunning=lookup.isRunning
     phoneChangeset=changeset}}
 </div>
 

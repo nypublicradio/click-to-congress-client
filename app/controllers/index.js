@@ -7,6 +7,7 @@ import {
   validateFormat
 } from 'ember-changeset-validations/validators';
 import lookupValidator from 'ember-changeset-validations';
+import { task } from 'ember-concurrency';
 
 const PhoneValidation = {
   phoneNumber: validateFormat({
@@ -60,11 +61,12 @@ export default Controller.extend({
     }
   }),
   
+  lookup: task(function*(address) {
+    let rep = yield this.store.query('representative', {address});
+    this.set('model', rep);
+  }).drop(),
+  
   actions: {
-    lookup(address) {
-      this.store.query('representative', {address})
-        .then(r => this.set('model', r));
-    },
     call(phone) {
       if (this.changeset.get('isValid')) {
         this.changeset.save();

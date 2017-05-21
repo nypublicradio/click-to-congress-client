@@ -5,16 +5,18 @@
 <div class="l-narrow">
   <div class="l-sidepad">
     {{input
+      disabled=isRunning
       classNames='input-address'
-      classNameBindings='changeset.error.address:is-errored'
+      classNameBindings='error.address:is-errored'
       value=address
       placeholder=(t 'address.placeholder')}}
       
-    {{#if changeset.error.address}}
-      <p class="error">{{changeset.error.address.validation}}</p>
+    {{#if error.address}}
+      <p class="error">{{error.address}}</p>
     {{/if}}
 
     {{input
+      disabled=isRunning
       classNames='input-phonenumber'
       classNameBindings='phoneChangeset.error.phoneNumber:is-errored'
       value=phoneChangeset.phoneNumber
@@ -24,6 +26,6 @@
       <p class="error">{{t 'validations.phone' value=phoneChangeset.phoneNumber}}</p>
     {{/if}}
 
-    <button class="lookup-submit" {{action 'getReps'}} disabled={{changeset.isInvalid}}>{{t 'labels.submit'}}</button>
+    <button class="lookup-submit" {{action 'getReps'}} disabled={{or changeset.isInvalid isRunning}}>{{#if isRunning}}{{fa-icon "spinner" spin=true}} {{/if}} {{t 'labels.submit'}}</button>
   </div>
 </div>
