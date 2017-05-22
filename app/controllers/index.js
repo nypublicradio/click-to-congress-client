@@ -40,27 +40,6 @@ export default Controller.extend({
     return formatPhoneNumber(number);
   }),
   
-  congress: computed('model', function() {
-    let congressPerson = this.get('model').findBy('title', 'Representative');
-    if (congressPerson) {
-      return congressPerson.get('district');
-    }
-  }),
-  
-  stateSenate: computed('model', function() {
-    let stateSenator = this.get('model').findBy('title', 'State Senator');
-    if (stateSenator) {
-      return stateSenator.get('district');
-    }
-  }),
-  
-  stateAssembly: computed('model', function() {
-    let stateAssemblor = this.get('model').findBy('title', 'Assembly Member');
-    if (stateAssemblor) {
-      return stateAssemblor.get('district');
-    }
-  }),
-  
   lookup: task(function*(address) {
     let rep = yield this.store.query('representative', {address});
     this.set('model', rep);
