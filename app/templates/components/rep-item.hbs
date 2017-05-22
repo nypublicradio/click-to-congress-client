@@ -9,7 +9,9 @@
 </div>
 
 <div class="representative-rightside">
-  {{#if myPhone}}
+  {{#if isDialing}}
+  Calling now (check your phone)
+  {{else if myPhone}}
   <button class="representative-callbutton" {{action 'callRep' rep.phone}}>
     {{t 'labels.call'}}
   </button>

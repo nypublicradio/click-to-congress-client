@@ -11,7 +11,10 @@ export default Ember.Component.extend({
 
   actions: {
     callRep(number) {
+      this.set('isDialing', true);
       this.get('call')(number);
+      // TODO get status from server
+      Ember.run.later(this, () => this.set('isDialing', false), 10 * 1000);
     }
   }
 });
