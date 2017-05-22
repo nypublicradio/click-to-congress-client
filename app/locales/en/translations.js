@@ -8,8 +8,10 @@ export default {
   },
   
   "location": {
-    "blurb": "Your address was recognized as {{address}}. If that doesn't seem right, try again with more details. <br>This is in a few different districts: the {{congress}} Congressional District, the {{stateSenate}} State Senate District, and the {{stateAssembly}} State Assembly District. <br>Here's who represents you:"
+    "blurb": "Your address was recognized as {{address}}. If that doesn't seem right, try again with more details. <br>This is in a few different districts:"
   },
+  
+  "rep-intro": "Here's who represents you:",
   
   "language-select.language": {
     "en": "english",

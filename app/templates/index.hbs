@@ -11,14 +11,24 @@
 </div>
 
 <div class="l-wide">
-  {{#if model}}
+  {{#if (and address districts)}}
     <div class="l-sidepad">
-      <p class="aligncenter smaller">
-        {{t 'location.blurb' address=address congress=congress stateSenate=stateSenate stateAssembly=stateAssembly}}
+      <p class="smaller">
+        {{t 'location.blurb' address=address}}
+      </p>
+      <ul class="smaller">
+        {{#each districts as |district|}}
+        <li>
+          {{district}}
+        </li>
+        {{/each}}
+      </ul>
+      <p class="smaller">
+        {{t 'rep-intro'}}
       </p>
     </div>
   {{/if}}
-  {{#each model as |rep|}}
+  {{#each reps as |rep|}}
     {{rep-item myPhone=changeset.phoneNumber rep=rep call=(action 'call')}}
   {{/each}}
 </div>
