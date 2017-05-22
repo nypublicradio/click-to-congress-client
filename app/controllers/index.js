@@ -41,8 +41,10 @@ export default Controller.extend({
   }),
   
   lookup: task(function*(address) {
-    let rep = yield this.store.query('representative', {address});
-    this.set('model', rep);
+    let response = yield fetch(`${config.API}${config.API_NAMESPACE}/v1/lookup?address=${address}`);
+    let {reps, normalizedInput, districts} = yield response.json();
+    let normalized = Object.keys(normalizedInput).map(k => normalizedInput[k]).join(', ');
+    this.setProperties({reps, address: normalized, districts});
   }).drop(),
   
   actions: {
