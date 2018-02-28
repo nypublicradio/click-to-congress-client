@@ -30,4 +30,4 @@ deployment:
           environment:
             AWS_BUCKET: $DEMO_AWS_BUCKET
             AWS_REGION: $DEMO_AWS_REGION
-      
+            AWS_PREFIX: $DEMO_AWS_PREFIX
