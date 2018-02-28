@@ -24,7 +24,7 @@ module.exports = function(environment) {
       // Here you can pass flags/options to your application instance
       // when it is created
     },
-    
+
     i18n: {
       defaultLocale: 'en'
     }
@@ -55,10 +55,11 @@ module.exports = function(environment) {
   if (environment === 'production') {
     ENV.API = 'https://clicktocongress.herokuapp.com';
   }
-  
+
   if (deployTarget === 'demo') {
     ENV.API = 'http://api.demo.nypr.digital';
     ENV.API_NAMESPACE = 'click-to-congress'
+    ENV.rootURL = '/click-to-congress/';
   }
 
   return ENV;
