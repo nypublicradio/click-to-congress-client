@@ -57,7 +57,7 @@ module.exports = function(environment) {
   }
 
   if (deployTarget === 'demo') {
-    ENV.API = 'http://api.demo.nypr.digital';
+    ENV.API = 'https://api.demo.nypr.digital';
     ENV.API_NAMESPACE = 'click-to-congress'
     ENV.rootURL = '/click-to-congress/';
   }
