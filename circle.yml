@@ -16,7 +16,6 @@ jobs:
             echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
             sudo apt-get update
             sudo apt-get install yarn
-            export PATH="/usr/bin/yarn:$PATH"
 
       - run:
           name: Ruby deps # ugh
@@ -29,7 +28,7 @@ jobs:
           key: grunt-and-bower
       - run:
           name: Install grunt and bower
-          command: yarn global add bower grunt-cli
+          command: /usr/bin/yarn global add bower grunt-cli --prefix ~/.config/yarn/global
       - save_cache:
           key: grunt-and-bower
           paths:
