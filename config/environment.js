@@ -52,13 +52,7 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
-    ENV.API = 'https://clicktocongress.herokuapp.com';
-  }
-
   if (deployTarget === 'demo') {
-    ENV.API = 'https://api.demo.nypr.digital';
-    ENV.API_NAMESPACE = 'click-to-congress'
     ENV.rootURL = '/click-to-congress/';
   }
 
