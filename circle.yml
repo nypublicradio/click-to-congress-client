@@ -12,7 +12,7 @@ jobs:
           name: Ruby deps # ugh
           command: |
             sudo apt-get update && sudo apt-get install ruby-sass --no-ri --no-rdoc
-            sudo gem update --system --no-ri --no-rdoc
+            sudo gem update --system
             sudo gem install compass --no-ri --no-rdoc
 
       - restore_cache:
