@@ -17,13 +17,6 @@ jobs:
             sudo apt-get update
             sudo apt-get install yarn
 
-      - run:
-          name: Ruby deps # ugh
-          command: |
-            sudo apt-get install ruby-sass
-            sudo gem update --system --no-ri --no-rdoc
-            sudo gem install compass --no-ri --no-rdoc
-
       - restore_cache:
           key: grunt-and-bower
       - run:
@@ -83,6 +76,12 @@ jobs:
           key: bower-deps-{{ checksum "bower.json" }}
       - restore_cache:
           key: node-deps-{{ checksum "yarn.lock" }}
+      - run:
+          name: Ruby deps # ugh
+          command: |
+            sudo apt-get install ruby-sass
+            sudo gem update --system --no-ri --no-rdoc
+            sudo gem install compass --no-ri --no-rdoc
       - run:
           name: Deploy to S3
           command: |
