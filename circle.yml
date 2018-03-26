@@ -84,6 +84,8 @@ jobs:
           key: bower-deps-{{ checksum "bower.json" }}
       - restore_cache:
           key: node-deps-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          key: modernizr-{{ .Revision }}
       - run:
           name: Ruby deps # ugh
           command: |
