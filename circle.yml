@@ -1,34 +1,104 @@
-machine:
-  node:
-    version: 7.10.0
+version: 2
 
-dependencies:
-  override:
-    - curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-    - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-    - sudo apt-get update && sudo apt-get install ruby-sass yarn
-    - gem update --system
-    - gem install compass --no-ri --no-rdoc
-    - yarn global add ember-cli bower grunt-cli:
+jobs:
+  build:
+    docker:
+      - image: circleci/node:8.10.0
+
+    steps:
+      - checkout
+
+      - run:
+          name: Ruby deps # ugh
+          command: |
+            sudo apt-get update && sudo apt-get install ruby-sass
+            gem update --system
+            gem install compass --no-ri --no-rdoc
+
+      - restore_cache:
+          key: grunt-and-bower
+      - run:
+          name: Install grunt and bower
+          command: yarn global add bower grunt-cli
+      - save_cache:
+          key: grunt-and-bower
+          paths:
+            - ~/.config/yarn/global
+
+      - restore_cache:
+          key: bower-deps-{{ checksum "bower.json" }}
+      - run:
+          name: Install bower deps
+          command: ~/.config/yarn/global/node_modules/.bin/bower i
+      - save_cache:
+          key: bower-deps-{{ checksum "bower.json" }}
+          paths:
+            - bower_components
+
+      - restore_cache:
+          key: node-deps-{{ checksum "yarn.lock" }}
+      - run:
+          name: Node dependencies
+          command: yarn --pure-lockfile
+      - save_cache:
+          key: node-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+
+  test:
+    docker:
+      - image: circleci/node:8.10.0-browsers
         environment:
-          PATH: "/usr/bin:${PATH}"
-    - yarn:
+          JOBS: 2
+
+    steps:
+      - checkout
+      - restore_cache:
+          key: bower-deps-{{ checksum "bower.json" }}
+      - restore_cache:
+          key: node-deps-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          key: modernizr-{{ .Revision }}
+      - run:
+          name: Test
+          command: ./node_modules/ember-cli/bin/ember test
+
+  deploy:
+    docker:
+      - image: circleci/node:8.10.0
         environment:
-          PATH: "/usr/bin:${PATH}"
-    - bower i
+          JOBS: 2
+    steps:
+      - checkout
+      - restore_cache:
+          key: bower-deps-{{ checksum "bower.json" }}
+      - restore_cache:
+          key: node-deps-{{ checksum "yarn.lock" }}
+      - run:
+          name: Deploy to S3
+          command: |
+            env | sed -n 's/^DEPLOY_//p' > .env
+            if [[ "${CIRCLE_BRANCH}" == "master" ]]; then
+              env | sed -n 's/^DEMO_//p' >> .env
+              ./node_modules/ember-cli/bin/ember deploy demo --verbose --activate
+            elif grep -q "v[0-9]\+\.[0-9]\+\.[0-9]\+" <<< "$CIRCLE_TAG"; then
+              env | sed -n 's/^PROD_//p' >> .env
+              ./node_modules/ember-cli/bin/ember deploy production --verbose --activate
+            fi
 
-test:
-  override:
-    - echo skip tests
-
-deployment:
-  prod:
-    branch: master
-    commands:
-      - grunt modernizr:dist
-      - ./node_modules/ember-cli/bin/ember deploy demo --verbose --activate:
-          environment:
-            AWS_BUCKET: $DEMO_AWS_BUCKET
-            AWS_REGION: $DEMO_AWS_REGION
-            AWS_PREFIX: $DEMO_AWS_PREFIX
-            API:        $DEMO_API
+workflows:
+  version: 2
+  just-build-and-deploy:
+    jobs:
+      - build:
+          filters:
+            tags:
+              only: /.*/
+      - deploy:
+          requires:
+            - build
+          filters:
+            tags:
+              only: /^v[0-9]+\.[0-9]+\.[0-9]+/
+            branches:
+              only: master
