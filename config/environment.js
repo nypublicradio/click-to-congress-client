@@ -1,7 +1,6 @@
 /* jshint node: true */
 
 module.exports = function(environment) {
-  var deployTarget = process.env.DEPLOY_TARGET;
   var ENV = {
     API: process.env.API || '/api',
     API_NAMESPACE: process.env.API_NAMESPACE || '',
@@ -52,7 +51,7 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (deployTarget === 'demo') {
+  if (environment === 'production') {
     ENV.rootURL = '/click-to-congress/';
   }
 
