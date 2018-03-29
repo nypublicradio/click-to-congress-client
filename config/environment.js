@@ -51,9 +51,8 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
-  if (environment === 'production') {
-    ENV.rootURL = '/click-to-congress/';
-  }
+  // if (environment === 'production') {
+  // }
 
   return ENV;
 };
