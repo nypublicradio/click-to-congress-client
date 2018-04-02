@@ -6,27 +6,27 @@ export default {
   "phone-number": {
     "placeholder": "Type your phone number (optional)"
   },
-  
+
   "location": {
     "blurb": "Your address was recognized as {{address}}. If that doesn't seem right, try again with more details. <br>This is in a few different districts:"
   },
-  
+
   "rep-intro": "Here's who represents you:",
-  
+
   "language-select.language": {
     "en": "english",
     "es": "español",
     "fr": "français",
     "cn": "中文",
   },
-  
+
   "validations": {
     "phone": "It looks like you didn’t enter your phone number correctly. It should be 9 numbers with no extra characters.",
     "zip": {
       "between": "{{description}} must be between {{min}} and {{max}} characters"
     }
   },
-  
+
   "titles": {
     "Senator": "Senator",
     "Representative": "Representative",
@@ -43,7 +43,7 @@ export default {
     "Borough President": "Borough President",
     "none": ""
   },
-  
+
   "parties": {
     "Democratic": "Democrat",
     "Democratic Party": "Democrat",
@@ -52,7 +52,7 @@ export default {
     "Independent": "Independent",
     "none": "No Party"
   },
-  
+
   'labels': {
     'phone': 'Phone',
     "submit": "Find my representatives",
