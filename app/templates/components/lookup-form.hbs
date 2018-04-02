@@ -10,7 +10,7 @@
       classNameBindings='error.address:is-errored'
       value=address
       placeholder=(t 'address.placeholder')}}
-      
+
     {{#if error.address}}
       <p class="error">{{error.address}}</p>
     {{/if}}
@@ -21,7 +21,7 @@
       classNameBindings='phoneChangeset.error.phoneNumber:is-errored'
       value=phoneChangeset.phoneNumber
       placeholder=(t 'phone-number.placeholder')}}
-      
+
     {{#if phoneChangeset.error.phoneNumber}}
       <p class="error">{{t 'validations.phone' value=phoneChangeset.phoneNumber}}</p>
     {{/if}}

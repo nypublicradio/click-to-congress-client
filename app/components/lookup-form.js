@@ -1,10 +1,10 @@
 import Ember from 'ember';
-  
+
 export default Ember.Component.extend({
   tagName: 'form',
   classNames: ['lookup-form'],
   error: {},
-  
+
   serverErrorMessage: Ember.computed('serverError', function() {
     let serverError = this.get('serverError');
     if (!serverError) {
@@ -20,7 +20,7 @@ export default Ember.Component.extend({
   submit() {
     this.send('getReps');
   },
-  
+
   actions: {
     getReps() {
       this.set('serverError', null);

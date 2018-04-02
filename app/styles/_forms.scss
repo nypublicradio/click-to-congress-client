@@ -4,7 +4,7 @@
   padding: 10px;
   display: block;
   width: 100%;
-  
+
   &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     font-style: oblique;
     font-size: 14px;
@@ -21,7 +21,7 @@
     font-style: oblique;
     font-size: 14px;
   }
-  
+
   &[disabled] {
     opacity: 0.5;
     pointer-events: none;

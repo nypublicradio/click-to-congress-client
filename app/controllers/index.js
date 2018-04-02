@@ -34,12 +34,12 @@ export default Controller.extend({
     this._super(...arguments);
     this.changeset = new Changeset(this, lookupValidator(PhoneValidation), PhoneValidation);
   },
-  
+
   formattedPhoneNumber: computed('phoneNumber', function() {
     let number = this.get('phoneNumber');
     return formatPhoneNumber(number);
   }),
-  
+
   lookup: task(function*(address) {
     let response = yield fetch(`${config.API}/${config.API_NAMESPACE}/v1/lookup?address=${address}`);
     let {reps, normalizedInput, districts, error} = yield response.json();
@@ -50,7 +50,7 @@ export default Controller.extend({
       this.setProperties({reps, address: normalized, districts});
     }
   }).drop(),
-  
+
   actions: {
     call(phone) {
       if (this.changeset.get('isValid')) {
