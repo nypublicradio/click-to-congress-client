@@ -41,6 +41,8 @@ export default Controller.extend({
   }),
 
   lookup: task(function*(address) {
+    this.setProperties({reps: null, address: null, districts: null});
+
     let response = yield fetch(`${config.API}/${config.API_NAMESPACE}/v1/lookup?address=${address}`);
     let {reps, normalizedInput, districts, error} = yield response.json();
     if (error) {
