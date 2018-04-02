@@ -42,9 +42,13 @@ export default Controller.extend({
   
   lookup: task(function*(address) {
     let response = yield fetch(`${config.API}/${config.API_NAMESPACE}/v1/lookup?address=${address}`);
-    let {reps, normalizedInput, districts} = yield response.json();
-    let normalized = Object.keys(normalizedInput).map(k => normalizedInput[k]).join(', ');
-    this.setProperties({reps, address: normalized, districts});
+    let {reps, normalizedInput, districts, error} = yield response.json();
+    if (error) {
+      this.set('serverError', error);
+    } else {
+      let normalized = Object.keys(normalizedInput).map(k => normalizedInput[k]).join(', ');
+      this.setProperties({reps, address: normalized, districts});
+    }
   }).drop(),
   
   actions: {
