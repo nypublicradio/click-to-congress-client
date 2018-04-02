@@ -27,5 +27,9 @@
     {{/if}}
 
     <button class="lookup-submit" {{action 'getReps'}} disabled={{or changeset.isInvalid isRunning}}>{{#if isRunning}}{{fa-icon "spinner" spin=true}} {{/if}} {{t 'labels.submit'}}</button>
+
+    {{#if serverErrorMessage}}
+      <p class="server-error">{{serverErrorMessage}}</p>
+    {{/if}}
   </div>
 </div>
