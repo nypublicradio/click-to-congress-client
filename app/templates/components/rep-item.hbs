@@ -12,7 +12,7 @@
   {{#if isDialing}}
   Calling now (check your phone)
   {{else if myPhone}}
-  <button class="representative-callbutton" {{action 'callRep' rep.phone}}>
+  <button class="representative-callbutton gtm__click-tracking" data-label="{{rep.name}}|{{rep.party}}" {{action 'callRep' rep.phone}}>
     {{t 'labels.call'}}
   </button>
   {{/if}}

@@ -1,5 +1,8 @@
 {{#each locales as |loc|}}
-  <button class="{{if (eq loc.id i18n.locale) 'active '}}language-button" {{action (action (mut i18n.locale) loc.id)}}>
+  <button
+    class="{{if (eq loc.id i18n.locale) 'active '}}language-button gtm__click-tracking"
+    data-label="{{loc.text}}"
+    {{action (action (mut i18n.locale) loc.id)}}>
     {{loc.text}}
   </button>
 {{/each}}
