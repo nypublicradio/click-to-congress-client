@@ -45,6 +45,7 @@ export default {
   },
 
   "parties": {
+    "Democrat": "Democrat",
     "Democratic": "Democrat",
     "Democratic Party": "Democrat",
     "Republican": "Republican",
