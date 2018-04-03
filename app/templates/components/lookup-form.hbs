@@ -28,6 +28,10 @@
 
     <button class="lookup-submit" {{action 'getReps'}} disabled={{or changeset.isInvalid isRunning}}>{{#if isRunning}}{{fa-icon "spinner" spin=true}} {{/if}} {{t 'labels.submit'}}</button>
 
+    <p class="privacy">
+      <a href="https://www.wnyc.org/privacy" target="_blank">Privacy policy</a>
+    </p>
+
     {{#if serverErrorMessage}}
       <p class="server-error">{{serverErrorMessage}}</p>
     {{/if}}
