@@ -41,18 +41,22 @@ export default Controller.extend({
   }),
 
   lookup: task(function*(address) {
-    window.dataLayer.push({
-      event: 'ctc_lookup',
-      address
-    });
-
     this.setProperties({reps: null, address: null, districts: null});
 
     let response = yield fetch(`${config.API}/${config.API_NAMESPACE}/v1/lookup?address=${address}`);
     let {reps, normalizedInput, districts, error} = yield response.json();
     if (error) {
       this.set('serverError', error);
+      window.dataLayer.push({
+        event: 'ctc_lookup-error',
+        address
+      });
     } else {
+      window.dataLayer.push({
+        event: 'ctc_lookup',
+        address: normalizedInput.zip
+      });
+
       let normalized = Object.keys(normalizedInput).map(k => normalizedInput[k]).join(', ');
       this.setProperties({reps, address: normalized, districts});
     }
