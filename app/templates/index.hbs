@@ -28,6 +28,12 @@
         {{t 'rep-intro'}}
       </p>
     </div>
+  {{else}}
+    <div class="l-sidepad">
+      <p class="smaller">
+        {{t 'no-districts'}}
+      </p>
+    </div>
   {{/if}}
   {{#each reps as |rep|}}
     {{rep-item myPhone=changeset.phoneNumber rep=rep call=(action 'call')}}

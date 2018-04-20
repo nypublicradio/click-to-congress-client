@@ -15,8 +15,9 @@ export default {
     "placeholder": 'Tapez votre numéro de téléphone (facultatif)'
   },
   "your-reps": "Vous habitez dans le code postal {{zip}}. C'est ce qu'on appelle le {{district}} District du Congrès. Voici qui vous représente:",
-  
-  
+
+  "no-districts": "Les informations de district n'ont pas pu être déterminées à partir de l'adresse que vous avez saisie. Essayez d'ajouter plus d'informations.",
+
   "validations": {
     "phone": "{{value}} is not a valid phone number",
     "zip": {

@@ -14,7 +14,9 @@ export default {
     "fr": "français",
     "cn": "中文",
   },
-  
+
+  "no-districts": "地区信息无法根据您输入的地址确定。尝试添加更多信息。",
+
   "validations": {
     "phone": "{{value}} is not a valid phone number",
     "zip": {

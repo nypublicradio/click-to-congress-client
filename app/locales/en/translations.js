@@ -13,6 +13,8 @@ export default {
 
   "rep-intro": "Here's who represents you:",
 
+  "no-districts": "District information could not be determined from the address you entered. Try adding more information like a ZIP code.",
+
   "language-select.language": {
     "en": "english",
     "es": "español",
