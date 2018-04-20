@@ -1,13 +1,13 @@
 export default {
   "blurb": "Conectándote con las personas en el gobierno que te representan, para que puedas decirles lo que quieres.",
-  
+
   "language-select.language": {
     "en": "english",
     "es": "español",
     "fr": "français",
     "cn": "中文",
   },
-  
+
   "address": {
     "placeholder": "Escriba su código postal"
   },
@@ -24,20 +24,20 @@ export default {
       "between": "{{description}} must be between {{min}} and {{max}} characters"
     }
   },
-  
+
   "titles": {
     "Sen": 'Senador',
     "Rep": 'Representante',
     "Del": 'Delegar',
     "Com": "Com"
   },
-  
+
   "parties": {
     "D": "Democract",
     "R": 'Republicano',
     "I": 'Independiente'
   },
-  
+
   'labels': {
     'phone': 'Teléfono',
     "submit": 'Ir',

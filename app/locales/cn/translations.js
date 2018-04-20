@@ -7,7 +7,7 @@ export default {
     "placeholder": '输入您的电话号码（可选）'
   },
   "your-reps": '您住在邮政编码{{zip}}.这被称为第{{district}}届国会区。 这里是谁代表你：',
-  
+
   "language-select.language": {
     "en": "english",
     "es": "español",
@@ -23,20 +23,20 @@ export default {
       "between": "{{description}} must be between {{min}} and {{max}} characters"
     }
   },
-  
+
   "titles": {
     "Sen": '参议员',
     "Rep": '代表',
     "Del": '代表',
     "Com": "Com"
   },
-  
+
   "parties": {
     "D": "Democract",
     "R": '共和党人',
     "I": '独立'
   },
-  
+
   'labels': {
     'phone': '电话',
     "submit": '走',
