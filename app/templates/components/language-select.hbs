@@ -2,7 +2,7 @@
   <button
     class="{{if (eq loc.id i18n.locale) 'active '}}language-button gtm__click-tracking"
     data-action="clicked language options"
-    data-label="{{loc.text}}"
+    data-label="{{loc.id}}"
     {{action (action (mut i18n.locale) loc.id)}}>
     {{loc.text}}
   </button>
